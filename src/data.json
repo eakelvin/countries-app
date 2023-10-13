@@ -87,7 +87,7 @@
     "area": 1580,
     "timezones": ["UTC+02:00"],
     "nativeName": "Åland",
-    "numericCode": "248",
+    "numericCode": "248", 
     "flags": {
       "svg": "https://flagcdn.com/ax.svg",
       "png": "https://flagcdn.com/w320/ax.png"

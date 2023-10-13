@@ -7,8 +7,12 @@ import Navbar from '../Components/Navbar'
 
 const CountryDetails = () => {
     const { id } = useParams()
-    const countryId = parseInt(id)
-    const country = data.find(count => count.numericCode = countryId)
+    const item = data[id]
+    console.log(id);
+    // const countryId = parseInt(id)
+    const country = data.find(count => count.index === id)
+    console.log(data);
+    // console.log(country);
 
   return (
     <div>
@@ -26,14 +30,14 @@ const CountryDetails = () => {
                 <div className="container flex flex-col mx-auto lg:flex-row">
                     <div className="lg:w-1/2 dark:bg-gray-800">
                         <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-                            <img src={country.flags.png} alt="" className="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96" />
+                            {/* <img src={country.flags.png} alt="" className="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96" /> */}
                         </div>
                     </div>
 
                     <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
                         <div className="flex space-x-2 sm:space-x-4">
                         
-                            <div className="space-y-2">
+                            {/* <div className="space-y-2">
                                 <p className="text-lg font-bold leadi">{country.name}</p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Native Name: {country.nativeName}</p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Population: {country.population}</p>
@@ -43,15 +47,15 @@ const CountryDetails = () => {
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Top Level Domain: {country.topLevelDomain}</p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Currencies: {country.currencies[0].code}</p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Languages: {country.languages[2].name}</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="flex space-x-2 sm:space-x-4">
                                 <div className="flex text-lg font-medium leadi">
                                     Border Countries:
-                                    <div className='border-solid border-2 pl-2 pr-3 mr-3 ml-2'>{country.borders[0]}</div>
+                                    {/* <div className='border-solid border-2 pl-2 pr-3 mr-3 ml-2'>{country.borders[0]}</div>
                                     <div className='border-solid border-2 pl-2 pr-3 mr-3'>{country.borders[1]}</div>
                                     <div className='border-solid border-2 pr-3 mr-3'>{country.borders[2]}</div>
-                                    <div className='border-solid border-2 pr-3 mr-3'>{country.borders[3]}</div>
+                                    <div className='border-solid border-2 pr-3 mr-3'>{country.borders[3]}</div> */}
                                 </div>
                         </div>
                     

@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar'
 import SearchForm from '../Components/Search'
 import Countries from '../Components/Countries'
 
+
 const Home = () => {
   return (
     <div>
