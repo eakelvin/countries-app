@@ -1,18 +1,16 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import data from '../data.json'
+// import data from '../data.json'
 import { BsArrowLeft} from "react-icons/bs";
 import Navbar from '../Components/Navbar'
 
 
-const CountryDetails = () => {
+const CountryDetails = ({countries}) => {
     const { id } = useParams()
-    const item = data[id]
     console.log(id);
     // const countryId = parseInt(id)
-    const country = data.find(count => count.index === id)
-    console.log(data);
-    // console.log(country);
+    const country = countries.find(count => count.ccn3 === id)
+    console.log(country);
 
   return (
     <div>
