@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsMoon } from "react-icons/bs";
-import { ThemeContextConsumer } from './ThemeContext';
 
 function Header() {
+  const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [darkMode])
+
   return (
-    <ThemeContextConsumer>
-      {context => (
-        <header className="lg:px-16 px-5 bg-white flex flex-wrap items-center py-4 shadow-md">
+        <header className="lg:px-16 px-5 flex flex-wrap items-center py-4 shadow-md">
           <div className="flex-1 flex justify-between items-center">
             <span className="text-xl font-bold">Where in the World?</span>
           </div>
 
           <div className="flex">
             <nav>
-              <div className="md:flex items-center justify-between text-base text-gray-700">
+              <div className="md:flex items-center justify-between text-base text-gray-700 dark:text-white">
                 <button
-                  onClick={context.toggleTheme}
+                  onClick={() =>{
+                    setDarkMode(!darkMode)
+                  }}
                   type="button"
                   className="flex md:order-2 text-dark  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:focus:ring-blue-800"
                 >
@@ -26,8 +35,6 @@ function Header() {
             </nav>
           </div>
         </header>
-     )}
-    </ThemeContextConsumer>
   );
 }
 

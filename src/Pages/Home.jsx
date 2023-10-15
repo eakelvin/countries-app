@@ -6,7 +6,7 @@ import Countries from '../Components/Countries'
 
 const Home = () => {
   return (
-    <div>
+    <div className='dark:bg-black dark:text-white'>
         <Navbar />
             <div className='px-6 lg:px-16 py-10'>
                 <SearchForm />
