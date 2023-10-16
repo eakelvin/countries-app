@@ -23,16 +23,20 @@ function App() {
   }, []);
 
   const handleSearch = (formData) => {
-    if (formData.country === '') {
-      setFilteredCountries(countries)
+    if (formData.region !== 'all') {
+      const filteredByRegion = countries.filter((country) =>
+        country.region.toLowerCase() === formData.region.toLowerCase()
+      );
+      setFilteredCountries(filteredByRegion);
+    } else if (formData.country !== '') {
+      const filteredCountries = countries.filter((country) =>
+        country.name.common.toLowerCase().includes(formData.country.toLowerCase())
+      );
+      setFilteredCountries(filteredCountries);
     } else {
-      const filteredCountries = countries.filter((country) => 
-      country.name.common.toLowerCase().includes(formData.country.toLowerCase())
-      )
-      setFilteredCountries(filteredCountries)
-      }
-    } 
-
+      setFilteredCountries(countries);
+    }
+  };
 
   return (
     <>

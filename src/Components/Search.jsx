@@ -18,7 +18,7 @@ function SearchForm({ handleSearch, countries }) {
   function handleSubmit(event) {
     event.preventDefault()
     handleSearch(formData)
-    console.log(formData);
+    // console.log(formData);
     setFormData({
       country: "",
       region: ""
@@ -69,14 +69,14 @@ function SearchForm({ handleSearch, countries }) {
                 >
                     <option defaultValue>Filter By Region</option>
                     <option value="africa">Africa</option>
-                    <option value="america">America</option>
+                    <option value="americas">America</option>
                     <option value="asia">Asia</option>
                     <option value="europe">Europe</option>
                     <option value="oceania">Oceania</option>
                 </select>
             </div>
         </div>
-        {/* <button>Click me</button> */}
+        <button>Click me</button>
         </form>
   );
 }
