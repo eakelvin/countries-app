@@ -8,8 +8,8 @@ import Navbar from '../Components/Navbar'
 const CountryDetails = ({countries}) => {
     const { id } = useParams()
     console.log(id);
-    // const countryId = parseInt(id)
-    const country = countries.find(count => count.ccn3 === id)
+    const countryId = parseInt(id)
+    const country = countries.find((count) => count.id === countryId)
     console.log(country);
 
   return (

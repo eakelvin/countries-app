@@ -8,7 +8,8 @@ import CountryDetails from './Pages/CountryDetails'
 
 
 function App() {
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([])
 
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -16,15 +17,28 @@ function App() {
     .then((data) => {
     // console.log(data); 
     setCountries(data);
+    setFilteredCountries(data)
   })
     .catch((error) => console.error('Error fetching data:', error));
   }, []);
+
+  const handleSearch = (formData) => {
+    if (formData.country === '') {
+      setFilteredCountries(countries)
+    } else {
+      const filteredCountries = countries.filter((country) => 
+      country.name.common.toLowerCase().includes(formData.country.toLowerCase())
+      )
+      setFilteredCountries(filteredCountries)
+      }
+    } 
+
 
   return (
     <>
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home countries={countries} />} />
+          <Route exact path='/' element={<Home countries={countries} handleSearch={handleSearch} filteredCountries={filteredCountries} />} />
           <Route path='/country/:id' element={<CountryDetails countries={countries} />} />
         </Routes>
       </Router>
