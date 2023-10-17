@@ -42,18 +42,16 @@ const CountryDetails = ({countries, darkMode, setDarkMode}) => {
                                 <p className="mb-3 font-normal"><span className='font-bold'>Capital:</span> {country?.capital}</p>
                                 <p className="mb-3 font-normal"><span className='font-bold'>Top Level Domain:</span> {country?.tld}</p>
                                 <p className="mb-3 font-normal"><span className='font-bold'>Currencies:</span>
-                                    {/* {country?.currencies && (
-                                        <div>
-                                        <ul>
+                                    {country?.currencies && (
+                                        <span>
                                             {Object.entries(country?.currencies).map(([code, currency]) => (
-                                            <li key={code}>
-                                                <span>Name: {currency.name}</span>
-                                                <span>Symbol: {currency.symbol}</span>
-                                            </li>
+                                            <span key={code}>
+                                                <span> {currency.name}</span>
+                                                <span className='pl-2'>{currency.symbol}</span>
+                                            </span>
                                             ))}
-                                        </ul>
-                                        </div>
-                                    )}   */}
+                                        </span>
+                                    )}  
                                 </p>
                                 <p className="mb-3 font-normal"><span className='font-bold'>Languages:</span>{" "}
                                     {country?.languages && Object.values(country.languages).join(", ")}
