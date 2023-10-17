@@ -22,7 +22,7 @@ const CountryDetails = ({countries, darkMode, setDarkMode}) => {
             </button>
             </Link>
 
-            <section className="dark:bg-black dark:text-white">
+            <section className="md:mb-28">
                 <div className="container flex flex-col mx-auto lg:flex-row">
                     <div className="lg:w-1/2 dark:bg-gray-800">
                         <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
@@ -33,7 +33,7 @@ const CountryDetails = ({countries, darkMode, setDarkMode}) => {
                     <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:black dark:text-white">
                         <div className="flex space-x-2 sm:space-x-4">
                         
-                            <div className="space-y-2">
+                            <div className="">
                                 <p className="text-lg font-bold leadi">{country?.name.common}</p>
                                 <p className="mb-3 font-normal"><span className='font-bold'>Native Name:</span> {country?.name.official}</p>
                                 <p className="mb-3 font-normal"><span className='font-bold'>Population:</span> {country?.population}</p>
