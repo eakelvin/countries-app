@@ -6,7 +6,7 @@ function Header({darkMode, setDarkMode}) {
   
 
   return (
-        <header className="lg:px-16 px-5 flex flex-wrap items-center py-4 shadow-md">
+        <header className="dark:bg-gray-700 lg:px-16 px-5 flex flex-wrap items-center py-4 shadow-md">
           <div className="flex-1 flex justify-between items-center">
             <Link to='/' className="text-xl font-bold">Where in the World?</Link>
           </div>
