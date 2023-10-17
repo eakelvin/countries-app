@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-function SearchForm({ handleSearch, countries }) {
+function SearchForm({ handleSearch, countries, handleRegion }) {
   const [formData, setFormData] = useState({
     country: "",
-    region: ""
+    region: "all"
   })
 
   function handleChange(event) {
@@ -13,20 +13,35 @@ function SearchForm({ handleSearch, countries }) {
         ...prevState, [name]: value
       }
     })
+    if (name === 'country') {
+      handleSearch({ ...formData, [name]: value })
+    }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    handleSearch(formData)
-    // console.log(formData);
-    setFormData({
-      country: "",
-      region: ""
+  function handleRegionChange(event) {
+    const { name, value } = event.target
+    setFormData(prevState => {
+      return {
+        ...prevState, [name]: value
+      }
     })
+    if (name === 'region') {
+      handleRegion({ ...formData, [name]: value })
+    }
   }
+
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   handleSearch(formData)
+  //   // console.log(formData);
+  //   setFormData({
+  //     country: "",
+  //     region: ""
+  //   })
+  // }
 
   return (
-        <form onSubmit={handleSubmit}>
+        <form>
         <div className="md:flex md:justify-between">
           <div className="relative w-full md:w-1/2">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -62,7 +77,7 @@ function SearchForm({ handleSearch, countries }) {
                 <select
                     id="region"
                     value={formData.region}
-                    onChange={handleChange}
+                    onChange={handleRegionChange}
                     // onChange={event => setFormData(event.target.value)}
                     name='region'
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -76,7 +91,7 @@ function SearchForm({ handleSearch, countries }) {
                 </select>
             </div>
         </div>
-        <button>Click me</button>
+        {/* <button>Click me</button> */}
         </form>
   );
 }

@@ -22,17 +22,40 @@ function App() {
     .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+  // const handleSearch = (formData) => {
+  //   if (formData.region !== 'all') {
+  //     const filteredByRegion = countries.filter((country) =>
+  //       country.region.toLowerCase() === formData.region.toLowerCase()
+  //     );
+  //     setFilteredCountries(filteredByRegion);
+  //   } else if (formData.country !== '') {
+  //     const filteredCountries = countries.filter((country) =>
+  //       country.name.common.toLowerCase().includes(formData.country.toLowerCase())
+  //     );
+  //     setFilteredCountries(filteredCountries);
+  //   } else {
+  //     setFilteredCountries(countries);
+  //   }
+  // };
+
+  
   const handleSearch = (formData) => {
+    if (formData.country === '') {
+      setFilteredCountries(countries)
+    } else {
+      const filteredCountries = countries.filter((country) => 
+      country.name.common.toLowerCase().includes(formData.country.toLowerCase())
+      )
+      setFilteredCountries(filteredCountries)
+      }
+    }
+
+  const handleRegion = (formData) => {
     if (formData.region !== 'all') {
       const filteredByRegion = countries.filter((country) =>
         country.region.toLowerCase() === formData.region.toLowerCase()
       );
       setFilteredCountries(filteredByRegion);
-    } else if (formData.country !== '') {
-      const filteredCountries = countries.filter((country) =>
-        country.name.common.toLowerCase().includes(formData.country.toLowerCase())
-      );
-      setFilteredCountries(filteredCountries);
     } else {
       setFilteredCountries(countries);
     }
@@ -42,7 +65,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home countries={countries} handleSearch={handleSearch} filteredCountries={filteredCountries} />} />
+          <Route exact path='/' element={<Home countries={countries} handleSearch={handleSearch} handleRegion={handleRegion} filteredCountries={filteredCountries} />} />
           <Route path='/country/:id' element={<CountryDetails countries={countries} />} />
         </Routes>
       </Router>
