@@ -8,7 +8,7 @@ const CountryDetails = ({countries, darkMode, setDarkMode}) => {
     const { id }= useParams()
     // console.log(id);
     const country = countries?.find((count) => count.cca2 === id)
-    console.log(country);
+    // console.log(country);
 
   return (
     <div>
@@ -71,19 +71,19 @@ const CountryDetails = ({countries, darkMode, setDarkMode}) => {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex space-x-2 sm:space-x-4">
+                        <div className="flex">
                                 <div className="flex text-lg font-medium leadi">
-                                    Border Countries:
+                                    <span className='font-bold'>Border Countries:</span>
                                     {country?.borders && Array.isArray(country.borders) && country.borders.length > 0 ? (
                                         <span>
                                         {country.borders.map((borderCountry, index) => (
                                             <span className='pl-2 inline-flex' key={index}>
-                                                <div className='border border-slate-500 px-2'>{borderCountry}</div>
+                                                <div className='border border-slate-500 px-2 mb-2'>{borderCountry}</div>
                                             </span>
                                         ))}
                                         </span>
                                     ) : (
-                                        <p className='pl-2'>No bordering countries.</p>
+                                        <p className='pl-2 font-normal'>No bordering countries.</p>
                                     )}
                                 </div>
                         </div>
