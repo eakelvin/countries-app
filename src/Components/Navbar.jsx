@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { BsMoon } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
-function Header() {
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
+function Header({darkMode, setDarkMode}) {
+  
 
   return (
         <header className="lg:px-16 px-5 flex flex-wrap items-center py-4 shadow-md">
           <div className="flex-1 flex justify-between items-center">
-            <span className="text-xl font-bold">Where in the World?</span>
+            <Link to='/' className="text-xl font-bold">Where in the World?</Link>
           </div>
 
           <div className="flex">

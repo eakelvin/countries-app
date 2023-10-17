@@ -4,17 +4,15 @@ import { Link, useParams } from 'react-router-dom'
 import { BsArrowLeft} from "react-icons/bs";
 import Navbar from '../Components/Navbar'
 
-
-const CountryDetails = ({countries}) => {
-    const { id } = useParams()
-    console.log(id);
-    const countryId = parseInt(id)
-    const country = countries.find((count) => count.id === countryId)
+const CountryDetails = ({countries, darkMode, setDarkMode}) => {
+    const { id }= useParams()
+    // console.log(id);
+    const country = countries?.find((count) => count.cca2 === id)
     console.log(country);
 
   return (
     <div>
-        <Navbar />
+        <Navbar setDarkMode={setDarkMode} darkMode={darkMode} />
         <div className='px-6 lg:px-16 py-10'>
 
             <Link to='/'>
@@ -24,36 +22,69 @@ const CountryDetails = ({countries}) => {
             </button>
             </Link>
 
-            <section className="dark:bg-gray-800 dark:text-gray-100">
+            <section className="dark:bg-black dark:text-white">
                 <div className="container flex flex-col mx-auto lg:flex-row">
                     <div className="lg:w-1/2 dark:bg-gray-800">
                         <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-                            {/* <img src={country.flags.png} alt="" className="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96" /> */}
+                            <img src={country?.flags.svg} alt="" className="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96" />
                         </div>
                     </div>
 
-                    <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
+                    <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:black dark:text-white">
                         <div className="flex space-x-2 sm:space-x-4">
                         
-                            {/* <div className="space-y-2">
-                                <p className="text-lg font-bold leadi">{country.name}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Native Name: {country.nativeName}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Population: {country.population}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Region: {country.region}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Sub Region: {country.subregion}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Capital: {country.capital}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Top Level Domain: {country.topLevelDomain}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Currencies: {country.currencies[0].code}</p>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Languages: {country.languages[2].name}</p>
-                            </div> */}
+                            <div className="space-y-2">
+                                <p className="text-lg font-bold leadi">{country?.name.common}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Native Name:</span> {country?.name.official}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Population:</span> {country?.population}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Region:</span> {country?.region}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Sub Region:</span> {country?.subregion}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Capital:</span> {country?.capital}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Top Level Domain:</span> {country?.tld}</p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Currencies:</span>
+                                    {/* {country?.currencies && (
+                                        <div>
+                                        <ul>
+                                            {Object.entries(country?.currencies).map(([code, currency]) => (
+                                            <li key={code}>
+                                                <span>Name: {currency.name}</span>
+                                                <span>Symbol: {currency.symbol}</span>
+                                            </li>
+                                            ))}
+                                        </ul>
+                                        </div>
+                                    )}  
+                                </p>
+                                <p className="mb-3 font-normal"><span className='font-bold'>Languages:</span>
+                                {country?.languages && (
+                                        <div>
+                                        <ul>
+                                            {Object.entries(country?.currencies).map(([code, language]) => (
+                                            <li key={code}>
+                                                <span>{language}</span>
+                                            </li>
+                                            ))}
+                                        </ul>
+                                        </div>
+                                    )}   */}
+                                        
+                                </p>
+                            </div>
                         </div>
                         <div className="flex space-x-2 sm:space-x-4">
                                 <div className="flex text-lg font-medium leadi">
                                     Border Countries:
-                                    {/* <div className='border-solid border-2 pl-2 pr-3 mr-3 ml-2'>{country.borders[0]}</div>
-                                    <div className='border-solid border-2 pl-2 pr-3 mr-3'>{country.borders[1]}</div>
-                                    <div className='border-solid border-2 pr-3 mr-3'>{country.borders[2]}</div>
-                                    <div className='border-solid border-2 pr-3 mr-3'>{country.borders[3]}</div> */}
+                                    {country?.borders && Array.isArray(country.borders) && country.borders.length > 0 ? (
+                                        <span>
+                                        {country.borders.map((borderCountry, index) => (
+                                            <span className='pl-2 inline-flex' key={index}>
+                                                <div className='border border-slate-500 px-2'>{borderCountry}</div>
+                                            </span>
+                                        ))}
+                                        </span>
+                                    ) : (
+                                        <p className='pl-2'>No bordering countries.</p>
+                                    )}
                                 </div>
                         </div>
                     
